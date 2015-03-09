@@ -19,38 +19,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
 	
-		$(function(){
+		/*$(function(){
 			var array = $("input[name='btnValue']");		
 			array.each(function(){
 				alert($(this).val());
 			});	
-		});
+		});*/
 	
 		function arrayData(){	
 		
-			var array = $("input[name='data']");			
-			var dataArray = new Array();	
-			array.each(function(){
-				dataArray.push($(this).val());
-			});			
-			//alert(dataArray);
-			
-			/*将字符串数组转为Json数组*/
-			var jsonArray = JSON.stringify(dataArray); 
+			//构造json对象
+			var dataArray="[]";	
+			var jsonArray = eval('('+dataArray+')');
+			var arr = {
+				 "name" : "jason",
+				 "value" :"824"
+			 	 };
+			jsonArray.push(arr);
 			//alert(jsonArray);
+			/*将字符串数组转为Json数组*/
+			//var jsonArray = JSON.stringify(dataArray); 
+			
+			var array1 = new Array();
+		    array1.push("ABC");
+		    array1.push("abc");		    
+		                
+		    var array2 = new Array();
+		    array2.push("123");
+		    array2.push("456");
+		            
+		    var allArray = new Array();
+		    allArray.push(array1);
+		    allArray.push(array2);
+
+		    //将字符串数组转化为JSON数组
+		    var jsonArry = JSON.stringify(allArray);
 			
 			$.ajax({			
 	             type: "GET",
-	             url: "JsonServelet",
+	             url: "JsonServlet",
+	             contentType: "application/x-www-form-urlencoded",
 	             dataType: "json",
 	             traditional: true,
 	             data: {
-	             	array: dataArray
+	             	array: jsonArray	
 	             },             	             
 	             success: function(data){
-	                 for ( var i = 0; i < data.length; i++) {
-						alert(data[i]);
-					}        
+	                alert(data[0].name);
 	             }
          	});
 		}
