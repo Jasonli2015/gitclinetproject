@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="gitclinet"
+  name="gitclinetproject"
   id="myeclipse.1425439890856"
   context-root="/gitclinet"
   j2ee-spec="5.0"
-  archive="gitclinet.war">
+  archive="gitclinetproject.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

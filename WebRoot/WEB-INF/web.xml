@@ -1,82 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  <display-name></display-name>	
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name></display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-      <servlet-name>UploadFileServlet</servlet-name>
-      <servlet-class>com.jason.file.UploadFileServlet</servlet-class>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <servlet-class>com.jason.file.UploadFileServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-      <servlet-name>UploadFileServlet</servlet-name>
-      <url-pattern>/UploadFileServlet</url-pattern>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <url-pattern>/UploadFileServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <servlet-name>UploadAttachmentServlet</servlet-name>
-      <servlet-class>com.jason.file.UploadAttachmentServlet</servlet-class>
+    <servlet-name>UploadAttachmentServlet</servlet-name>
+    <servlet-class>com.jason.file.UploadAttachmentServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-      <servlet-name>UploadAttachmentServlet</servlet-name>
-      <url-pattern>/UploadAttachmentServlet</url-pattern>
+    <servlet-name>UploadAttachmentServlet</servlet-name>
+    <url-pattern>/UploadAttachmentServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <servlet-name>UploadPhotoServlet</servlet-name>
-      <servlet-class>com.jason.file.UploadPhotoServlet</servlet-class>
+    <servlet-name>UploadPhotoServlet</servlet-name>
+    <servlet-class>com.jason.file.UploadPhotoServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-      <servlet-name>UploadPhotoServlet</servlet-name>
-      <url-pattern>/UploadPhotoServlet</url-pattern>
+    <servlet-name>UploadPhotoServlet</servlet-name>
+    <url-pattern>/UploadPhotoServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <servlet-name>SendEmailServlet</servlet-name>
-      <servlet-class>com.jason.email.SendEmailServlet</servlet-class>
+    <servlet-name>SendEmailServlet</servlet-name>
+    <servlet-class>com.jason.email.SendEmailServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-      <servlet-name>SendEmailServlet</servlet-name>
-      <url-pattern>/SendEmailServlet</url-pattern>
+    <servlet-name>SendEmailServlet</servlet-name>
+    <url-pattern>/SendEmailServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <servlet-name>GenerateTemplateServlet</servlet-name>
-      <servlet-class>com.jason.file.GenerateTemplateServlet</servlet-class>
+    <servlet-name>GenerateTemplateServlet</servlet-name>
+    <servlet-class>com.jason.file.GenerateTemplateServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-      <servlet-name>GenerateTemplateServlet</servlet-name>
-      <url-pattern>/GenerateTemplateServlet</url-pattern>
+    <servlet-name>GenerateTemplateServlet</servlet-name>
+    <url-pattern>/GenerateTemplateServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <servlet-name>JsonServlet</servlet-name>
-      <servlet-class>com.jason.json.servlet.JsonServlet</servlet-class>
+    <servlet-name>JsonServlet</servlet-name>
+    <servlet-class>com.jason.json.servlet.JsonServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-      <servlet-name>JsonServlet</servlet-name>
-      <url-pattern>/JsonServlet</url-pattern>
+    <servlet-name>JsonServlet</servlet-name>
+    <url-pattern>/JsonServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <servlet-name>JsonOperationServlet</servlet-name>
-      <servlet-class>com.jason.json.servlet.JsonOperationServlet</servlet-class>
+    <servlet-name>JsonOperationServlet</servlet-name>
+    <servlet-class>com.jason.json.servlet.JsonOperationServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-      <servlet-name>JsonOperationServlet</servlet-name>
-      <url-pattern>/JsonOperationServlet</url-pattern>
+    <servlet-name>JsonOperationServlet</servlet-name>
+    <url-pattern>/JsonOperationServlet</url-pattern>
   </servlet-mapping>
-  
 </web-app>
