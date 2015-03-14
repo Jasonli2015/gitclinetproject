@@ -3,7 +3,7 @@
     <wb-module deploy-name="gitclinetproject">
         <wb-resource deploy-path="/" source-path="/WebRoot"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="/gitclinet"/>
         <property name="java-output-path" value="/gitclinetproject/WebRoot/WEB-INF/classes"/>
+        <property name="context-root" value="/gitclinetproject"/>
     </wb-module>
 </project-modules>
