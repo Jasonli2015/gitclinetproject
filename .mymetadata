@@ -3,7 +3,7 @@
   type="WEB"
   name="gitclinetproject"
   id="myeclipse.1425439890856"
-  context-root="/gitclinet"
+  context-root="/gitclinetproject"
   j2ee-spec="5.0"
   archive="gitclinetproject.war">
   <attributes>
