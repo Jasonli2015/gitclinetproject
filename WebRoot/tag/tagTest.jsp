@@ -37,17 +37,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		request.setAttribute("name",s);
 	%>
 	Test El supported tag:
-	<p><jason-tag:output name="${name}"/></p>  	
+	<p><jason-tag:el name="${name}"/></p>  	
   
     <%
 		Man man = new Man();
-		man.setSex("diego");		
+		man.setName("Jay");		
 		request.setAttribute("man",man);
 	%>
 	Test nested tag:
 	<br>
-	<jason-tag:with value="${man}">
-		<jason-tag:nestedout property="sex"/>
-	</jason-tag:with>
-  </body>
+	<p><jason-tag:with value="${man}">
+		<jason-tag:nestedout property="name"/>
+	</jason-tag:with></p>
+
+	<%
+		Collection<Object> c = new ArrayList<Object>();
+
+		Man man1 = new Man();
+		man1.setName("diego");
+		c.add(man1);
+
+		Man man2 = new Man();
+		man2.setName("Zidane");
+		c.add(man2);
+
+		Man man3 = new Man();
+		man3.setName("Rui");
+		c.add(man3);
+
+		People p = new People();
+		p.setMen(c);
+		request.setAttribute("people", p);
+	%>
+	Test loop tag:
+	<br>
+	<jason-tag:withObject value="${people}">
+		<jason-tag:withCollection property="men" >
+			<jason-tag:elementout property="name" />
+			<br>
+		</jason-tag:withCollection>
+	</jason-tag:withObject>
+</body>
 </html>

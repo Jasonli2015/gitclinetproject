@@ -6,10 +6,10 @@
 	<tlib-version>1.0</tlib-version>
 	<jsp-version>1.2</jsp-version>
 	<short-name>jason-tag</short-name>
-	
-	<!--OutputTag -->
+
+	<!--EL tag -->
 	<tag>
-		<name>output</name>
+		<name>el</name>
 		<tag-class>com.jason.tag.ELTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
@@ -19,7 +19,7 @@
 		</attribute>
 	</tag>
 
-	<!--WithTag -->
+	<!--Outside tag -->
 	<tag>
 		<name>with</name>
 		<tag-class>com.jason.tag.WithTag</tag-class>
@@ -30,8 +30,8 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
-	
-	<!--OutputTag2 -->
+
+	<!--Inside tag -->
 	<tag>
 		<name>nestedout</name>
 		<tag-class>com.jason.tag.NestedOutputTag</tag-class>
@@ -42,4 +42,40 @@
 			<rtexprvalue>false</rtexprvalue>
 		</attribute>
 	</tag>
+
+	<!--WithObjectTag -->
+	<tag>
+		<name>withObject</name>
+		<tag-class>com.jason.tag.cycle.WithObjectTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!--WithCollectionTag -->
+	<tag>
+		<name>withCollection</name>
+		<tag-class>com.jason.tag.cycle.WithCollectionTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<!--ElementOutputTag -->
+	<tag>
+		<name>elementout</name>
+		<tag-class>com.jason.tag.cycle.ElementOutputTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
 </taglib>

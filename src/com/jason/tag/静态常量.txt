@@ -1,0 +1,22 @@
+标签中静态常量: 
+EVAL_BODY_INCLUDE：告诉服务器正文的内容，并把这些内容送入输出流 
+SKIP_BODY：告诉服务器不要处理正文内容 
+EVAL_PAGE：让服务器继续执行页面 
+SKIP_PAGE：让服务器不要处理剩余的页面 
+EVAL_BODY_AGAIN：让服务器继续处理正文内容，只有doAfterBody方法可以返回 
+EVAL_BODY_BUFFERED：BodyTag接口的字段，在doStartTag()返回 
+EVAL_BODY_INCLUDE、SKIP_BODY一般由doStartTag()返回，而EVAL_PAPGE、SKIP_PAGE由doEndTag()返回。
+
+执行顺序如下： 
+doStartTag()→doInitBody()→setBodyContent()→doAfterBody()→doEndTag() 
+
+doStartTag()方法可返回EVAL_BODY_INCLUDE或SKIP_BODY， 
+如果返回EVAL_BODY_INCLUDE则继续执行； 
+如果返回SKIP_BODY则接下来的doInitBody(),setBodyContent(), doAfterBody()三个方法不会被执行， 
+而直接执行doEndTag()方法。 
+
+setBodyContent()方法用于设置标签体内容，如果在此之前要作一些初始化工作，则在doInitBody()方法中完成。 
+标签体内容执行完后，会调用doAfterBody()方法，此方法可返回EVAL_BODY_TAG, SKIP_BODY, EVAL_PAGE或SKIP_PAGE。 
+如果返回EVAL_BODY_TAG则会再次设置标签体内容，直到返回SKIP_BODY； 
+如果返回EVAL_PAGE则标签体执行完后会继续执行JSP页面中接下来的部分； 
+如果返回SKIP_PAGE，则JSP页面的后续内容将不再执行。 

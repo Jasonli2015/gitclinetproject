@@ -19,7 +19,7 @@ public class NestedOutputTag extends BodyTagSupport {
 		if (parent == null)
 			throw new JspException("Can not find parent Tag ");
 		try {
-			Object propertyValue = PropertyUtils.getProperty(parent.getValue(),"Ssex");
+			Object propertyValue = PropertyUtils.getProperty(parent.getValue(),property);
 			parent.setOutput(propertyValue);
 		} catch (Exception e) {
 			throw new JspException(e);
