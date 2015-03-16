@@ -126,6 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 	<div class="file-box">
 	  <form action="${pageContext.request.contextPath}/GenerateTemplateServlet" method="post" enctype="multipart/form-data" target="hidden_frame">
+	 	<h4>文件上传、读取并显示</h4>
 	 	<input type='text' name='template' id='template' class='txt' />  
 	 	<input type='button' class='btn' value='browse' />	    
 	    <input type="file" name="fileField" class="file" id="fileField" size="28" onchange="uploadFile(this);" />
