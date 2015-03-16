@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE taglib
   PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
   "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
@@ -6,6 +6,35 @@
 	<tlib-version>1.0</tlib-version>
 	<jsp-version>1.2</jsp-version>
 	<short-name>jason-tag</short-name>
+	
+	<!--Simple tag -->
+	<tag>
+		<name>simple</name>
+		<!--tag对应的java类的名字 -->
+		<tag-class>com.jason.tag.SimpleTag</tag-class>
+		<!-- 如果tag标签没有内容的话，那必须定义body-content元素为空 -->
+		<body-content>empty</body-content>
+		<attribute>
+			<!--参数的名字 -->
+			<name>name</name>
+			<!--是否是必填选项 -->
+			<required>false</required>
+			<!--这个参数的值是否可以写入，换句话说 就是这个参数是否可以动态赋值 -->
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<!--Property tag -->
+	<tag>
+		<name>property</name>
+		<tag-class>com.jason.tag.PropertyTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
 
 	<!--EL tag -->
 	<tag>
@@ -22,7 +51,7 @@
 	<!--Outside tag -->
 	<tag>
 		<name>with</name>
-		<tag-class>com.jason.tag.WithTag</tag-class>
+		<tag-class>com.jason.tag.nesting.WithTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>value</name>
@@ -34,7 +63,7 @@
 	<!--Inside tag -->
 	<tag>
 		<name>nestedout</name>
-		<tag-class>com.jason.tag.NestedOutputTag</tag-class>
+		<tag-class>com.jason.tag.nesting.NestedOutputTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<name>property</name>
@@ -66,6 +95,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+	
 	<!--ElementOutputTag -->
 	<tag>
 		<name>elementout</name>
