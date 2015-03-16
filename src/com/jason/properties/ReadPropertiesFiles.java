@@ -41,7 +41,7 @@ public class ReadPropertiesFiles {
 			port = config.getString("port");
 			username = config.getString("username");
 			password = config.getString("password");			
-			config.setProperty("userno", "80546690");//该新加的键值对会保存在内存中
+			config.setProperty("userno", "12345678");//该新加的键值对会保存在内存中
 			config.setAutoSave(true);//自动保存
 			System.out.println(url +":" + port + "&username = " + username +"&password = " + password + "&userno = " + config.getString("userno"));
 		} catch (ConfigurationException e) {

@@ -78,8 +78,7 @@ public class JspToHtml {
     /**
      * 根据url生成静态页面
      *
-     * @param u    动态文件路经 如：http://www.163.com/x.jsp
-	
+     * @param u    动态文件路经 如：http://www.163.com/x.jsp	
      * @param path 文件存放路经如：x:\\abc\bbb.html
      * @return
      */
@@ -111,8 +110,7 @@ public class JspToHtml {
     /**
      * 根据url生成静态页面
      *
-     * @param url 动态文件路经 如：http://www.163.com/x.jsp
-	
+     * @param url 动态文件路经 如：http://www.163.com/x.jsp	
      * @return d
      */
     public static StringBuffer getHtmlTextByURL(String url) {
