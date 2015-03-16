@@ -16,6 +16,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/testJs.js"></script>
+  <script type="text/javascript">		
+		function preview(obj){
+			var template = $("#template").val();
+			var newWindow;
+			$.ajax({		
+				type: "POST",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+				dataType: "text",//返回结果类型
+				async: false,
+				url: "GenerateTemplateServlet?template="+template,
+				success: function(data) {
+					//打开新窗口并把返回内容写入到新窗口中
+					newWindow = window.open("target","_blank");
+					newWindow.document.write(data); 
+				    newWindow.document.close();
+				},
+				error: function(data) {	
+					alert(data);
+				}
+		    });
+		}
+	</script>
   <body>	
   	<h3>截取字符串</h3>
   	<input type="text" id="checkData" onchange="lengthCheck(8);"/> 
@@ -30,5 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<option>C</option>
 	</select>
 	<select id="select2"></select>
+	<h3>读取并显示html模板</h3>
+	<input type="file" id="template" /><input type="button" value="preview" onclick="preview(this);" />
   </body> 
 </html>

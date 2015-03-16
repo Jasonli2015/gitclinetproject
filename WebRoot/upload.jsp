@@ -64,40 +64,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#file").click();		
 	}
 	function changeBtn(){
-		if ($.browser.webkit) {
+		if ($.browser.webkit||$.browser.msie) {
         	var data = $("#file").val().replace(/(c:\\)*fakepath\\/i,'');
         	$("#templateInput").val(data);  
 		} else if ($.browser.mozilla) {
 			var data = $("#file").val();
 			$("#templateInput").val(data);
-		} else if ($.browser.msie) {
-			var file_upl = document.getElementById("file");	
-			file_upl.select();
-			window.parent.document.body.focus(); 
-			var realpath = document.selection.createRange().text;
-			document.getElementById("templateInput").value = realpath;
 		} 
-	}
-	
-	function fileBtn(){		
-		if( $.browser.msie && $.browser.version == "8.0" ){
-			var file_upl = document.getElementById("file2");	
-			file_upl.select();
-			window.parent.document.body.focus(); 
-			var realpath = document.selection.createRange().text;			
-			document.getElementById("templateInput").value = realpath;
-		}
-	}
+		$("#uploadForm").submit();
+	}	
 	
 	function uploadFile(obj){
 		if ($.browser.webkit||$.browser.msie) {
 			var data = obj.value.replace(/(c:\\)*fakepath\\/i,'');
-			$("#textfield").val(data);  
+			$("#template").val(data);  
 		} else if ($.browser.mozilla) {
 			var data = obj.value;
-			$("#textfield").val(data);
+			$("#template").val(data);
 		} 
-		//document.getElementById('textfield').value=obj.value;
+	}
+	
+	function preview(obj){
+		var template = $("#template").val();
+		var newWindow;
+		$.ajax({		
+			type: "GET",
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+			dataType: "text",//返回结果类型
+			async: false,
+			url: "GenerateTemplateServlet?template="+template,
+			success: function(data) {
+				//打开新窗口并把返回内容写入到新窗口中
+				newWindow = window.open("target","_blank");
+				newWindow.document.write(data); 
+			    newWindow.document.close();
+			},
+			error: function(data) {	
+				alert(data);
+			}
+	    });
 	}
 
   </script>
@@ -110,30 +115,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	.file{ position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:260px } 	
   </style>
   <body>      
-	<form action="filedemo.jsp" id="fileform" name="fileform" encType="multipart/form-data"  method="post" target="hidden_frame" >
+	<form action="filedemo.jsp" id="uploadForm" method="post" enctype="multipart/form-data" target="file_frame">
 		<div>
+			<h4>隐藏file input框的文件上传</h4>
 			<input type="text" id="templateInput" name="templateInput" style="width: 248px;"/>
+			<input type="file" id="file" onchange="changeBtn();" style='display:none' >
 			<input type="button" value="browse" onclick="browseBtn();"/>
-			<input type="file" name="file" id="file" onchange="changeBtn();"/>
-			<input type="submit" id="submitBtn" value="submit"/>
-		</div>			
-		<!--<div>
-			<input type="file" name="file2" id="file2" onchange="fileBtn();" />
-			<input type="submit" value="submit" /> 
-		</div>-->				
-		<iframe name='hidden_frame' id="hidden_frame" style='display:none' ></iframe> 					
+		</div>					
+		<iframe name='file_frame' id="file_frame" style='display:none' ></iframe> 					
 	</form>
 	<div class="file-box">
-	  <form action="filedemo.jsp" method="post" enctype="multipart/form-data" method="post" target="hidden_frame">
-	 	<input type='text' name='textfield' id='textfield' class='txt' />  
-	 	<input type='button' class='btn' value='browse' />
-	    <%--<input type="file" name="fileField" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />--%>
+	  <form action="${pageContext.request.contextPath}/GenerateTemplateServlet" method="post" enctype="multipart/form-data" target="hidden_frame">
+	 	<input type='text' name='template' id='template' class='txt' />  
+	 	<input type='button' class='btn' value='browse' />	    
 	    <input type="file" name="fileField" class="file" id="fileField" size="28" onchange="uploadFile(this);" />
 	 	<input type="submit" name="submit" class="btn" value="upload" />
+	 	<input type="button" class="btn" value="preview" onclick="preview(this);" />
 	  </form>
 	</div>
-	<br>
-	<br>
 	<h4>多文件上传：</h4>
 	<table style="width: 90%;">  
         <tr>  
@@ -144,6 +143,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<input type="file" name="uploadify" id="uploadify" />
             </td>
         </tr>  
-    </table>    
+    </table>
   </body>
 </html>
