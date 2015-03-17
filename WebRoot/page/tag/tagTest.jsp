@@ -71,11 +71,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	%>
 	Test loop tag:
 	<br>
-	<jason-tag:withObject value="${people}">
+	<p><jason-tag:withObject value="${people}">
 		<jason-tag:withCollection property="men" >
 			<jason-tag:elementout property="name" />
-			<br>
 		</jason-tag:withCollection>
-	</jason-tag:withObject>
+	</jason-tag:withObject></p> 	  
+	
 </body>
 </html>
