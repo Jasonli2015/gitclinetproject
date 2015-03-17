@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>html5 test</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+  <script type="text/javascript" src="../../js/jquery.js"></script>
+
+  <body>
+  	<div style="text-align:center;">
+		<button onclick="playPause();">播放/暂停</button> 
+		<button onclick="makeBig();">大</button>
+		<button onclick="makeNormal();">中</button>
+		<button onclick="makeSmall();">小</button>
+		<br /> 
+	  	<h3>video 标签</h3>
+	  	<h4>播放ogg文件</h4>
+	  	<!-- <video> 与 </video> 之间插入的内容是供不支持 video 元素的浏览器显示的 -->
+	    <video width="320" controls="controls" >
+	    	<source src="../../music/PacificRim.ogg" type="video/ogg" >
+	    		Your browser does not support the video tag.
+	    	</source>
+	    </video>
+	    <h4>播放mp4文件</h4>
+	    <video id="video" width="320" height="240" controls="controls" style="margin-top:15px;">
+	    	<source src="../../movie/mov_bbb.mp4" type="video/mp4" >
+	    		Your browser does not support the video tag.
+	    	</source>    	
+	    </video>  
+	</div>  
+  </body>
+  <script type="text/javascript">
+  
+  	var video = document.getElementById("video");
+  	
+	function playPause(){		
+		if (video.paused) {
+			video.play();
+		} else {
+			video.pause();
+		}
+	}
+	
+	function makeBig(){ 
+		video.width = 560; 
+	} 
+	
+	function makeSmall(){ 
+		video.width=320; 
+	} 
+	
+	function makeNormal(){ 
+		video.width=420; 
+	}
+  </script>
+</html>
