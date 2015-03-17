@@ -25,6 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   
+  	Test simple tag:
+  	<p><jason-tag:simple/></p>
+  	
+  	Test proper tag:
+  	<p><jason-tag:property value="Sam"/></p>
+  
   	<%
 		String tut = "tutorial";
 		request.setAttribute("tut",tut);
@@ -75,7 +81,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<jason-tag:withCollection property="men" >
 			<jason-tag:elementout property="name" />
 		</jason-tag:withCollection>
-	</jason-tag:withObject></p> 	  
-	
+	</jason-tag:withObject></p> 
 </body>
 </html>

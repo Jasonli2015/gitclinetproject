@@ -6,7 +6,7 @@
 * @date 2014-11-12 下午2:53:05
 * @version V1.0  
 */ 
-package com.jason.test;
+package com.jason.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -66,6 +66,9 @@ public class ReadFile {
         }
     }
     
+    /**
+     * 删除指定文件夹下的指定文件
+     * */
     public static void deletefile(String delpath,String name)
             throws FileNotFoundException, IOException {
 	    try {	
