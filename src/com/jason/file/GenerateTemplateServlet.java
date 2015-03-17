@@ -47,7 +47,7 @@ public class GenerateTemplateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-        String template = request.getParameter("template"); 
+        String template = request.getParameter("fileInput"); 
         
         String finalUrl = this.getServletContext().getRealPath("/upload") + java.io.File.separator + template;
         String html = JspToHtmlFile(finalUrl);

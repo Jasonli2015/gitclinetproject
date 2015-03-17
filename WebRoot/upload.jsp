@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div>
 			<h4>隐藏file input框的文件上传</h4>
 			<input type="text" id="templateInput" name="templateInput" style="width: 248px;"/>
-			<input type="file" id="file" onchange="changeBtn();" style='display:none' >
+			<input type="file" id="file" name="fileInput" onchange="changeBtn();" style='display:none' >
 			<input type="button" value="browse" onclick="browseBtn();"/>
 		</div>					
 		<iframe name='file_frame' id="file_frame" style='display:none' ></iframe> 					
