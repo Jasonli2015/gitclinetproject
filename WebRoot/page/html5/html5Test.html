@@ -98,7 +98,7 @@
 	  } else {
 		  localStorage.pagecount = 1;
 	  }
-	  document.write("Visits: " + localStorage.pagecount + "time(s).<br>");
+	  document.write("Visits by localStorage: " + localStorage.pagecount + "time(s).<br>");
 	  
 	  //sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
 	  if (sessionStorage.pagecount) {
@@ -107,7 +107,7 @@
 	  else {
 	  	sessionStorage.pagecount=1;
 	  }
-	  document.write("Visits "+sessionStorage.pagecount+" time(s) this session.");
+	  document.write("Visits by sessionStorage: "+sessionStorage.pagecount+" time(s) this session.");
 	 
   </script>
   <body>
@@ -115,7 +115,8 @@
   		<div>
 			<h3>web缓存</h3>		
 			<p>刷新页面会看到计数器在增长。</p>
-			<p>请关闭浏览器窗口，然后再试一次，计数器会继续计数。</p>
+			<p>请关闭浏览器窗口，然后再试一次，计数器（localStorage）会继续计数。</p>
+			<p>请关闭浏览器窗口，然后再试一次，计数器（sessionStorage）已经重置了。</p>
 		</div>	
 	  	<h3>视频video标签</h3>
 	  	<h4>播放ogg文件</h4>
