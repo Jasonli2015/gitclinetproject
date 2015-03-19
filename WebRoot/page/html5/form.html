@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>html5 form test</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+  <style type="text/css">
+  td{
+  	width: 150px;
+  }
+  </style>
+  <body>
+  	<form action="" autocomplete="on">
+  		<table>
+  			<tr>
+  				<td>E-mail:</td>  
+  				<!-- multiple 属性规定输入域中可选择多个值 --> 
+  				<td><input type="email" multiple="multiple"/></td>  		
+  			</tr>
+  			<tr>
+  				<td>Home page:</td>  
+  				<td><input type="url" /></td> 		
+  			</tr>
+  			<tr>
+  				<td>Points:</td>  	
+  				<td><input type="number" min="1" max="10" step="2" /></td>	
+  			</tr>
+  			<tr>
+  				<td>Range:</td>  	
+  				<td><input type="range" min="1" max="10" step="2" /></td>	
+  			</tr>
+  			<tr>
+  				<td>Date:</td>  	
+  				<td><input type="date" /></td>	
+  				<td><input type="month" /></td>
+  				<td><input type="week" /></td>
+  				<td><input type="datetime" /></td>
+  				<td><input type="datetime-local" /></td>
+  			</tr>
+  			<tr>
+  				<td>Search:</td>  
+  				<!-- placeholder 属性提供一种提示（hint），描述输入域所期待的值 -->	
+  				<td><input type="search" placeholder="Google"/></td>	
+  			</tr>
+  			<tr>
+  				<td>User name:</td>  	
+  				<td><input type="text" autofocus="autofocus" /></td>	
+  			</tr>
+  			<tr>
+  				<td>Select file:</td>
+  				<!-- multiple 属性规定输入域中可选择多个值 -->  	
+  				<td><input type="file" multiple="multiple" /></td>	
+  			</tr>
+  			<tr>
+  				<td>Country code:</td>
+  				<!-- pattern 属性规定用于验证 input 域的正则表达式模式（pattern） -->  	
+  				<!-- required 属性规定必须在提交之前填写输入域（不能为空） --> 
+  				<td><input type="text" pattern="[A-z]{3}" required="required" title="Three letter country code" /></td>	
+  			</tr>
+  			<tr>
+  				<td><input type="submit" value="sbumit"></td>  		
+  			</tr>
+  		</table>  		
+  	</form>    
+  </body>
+</html>
