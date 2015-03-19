@@ -77,10 +77,10 @@ function selectChange(){
 		var $option = "<option>Jason</option>";
 		$("#select2").append($option);
 	} else if ($("#select").val()=="B") {
-		var $option = "<option>lxw</option>";
+		var $option = "<option>Jay</option>";
 		$("#select2").append($option);
 	} else if ($("#select").val()=="C") {
-		var $option = "<option>李小伟</option>";
+		var $option = "<option>张三</option>";
 		$("#select2").append($option);
 	}		
 }    
