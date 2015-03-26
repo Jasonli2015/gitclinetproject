@@ -27,11 +27,11 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 
 public class SendEmail {
 	
+	private static String fileName = "email.properties";
+	
 	public static void main(String[] args) throws AddressException, MessagingException {	
 				
 		PropertiesConfiguration config = null;
-		
-		String fileName = "email.properties";
 		
 		String htmlPath = "";
 		
@@ -57,7 +57,7 @@ public class SendEmail {
 		try {
 			config = new PropertiesConfiguration(fileName);	
 			
-			attachment = config.getString("ATTACHMENTPATH")+File.separator+"Zhihu.jpg";
+			attachment = config.getString("ATTACHMENTPATH")+File.separator+"kobe.jpg";
 			
 			attachments[0] = attachment;	
 					
@@ -75,13 +75,13 @@ public class SendEmail {
 	
 	public static void sendEmail(String comment,String subject, String content, String[] subjectMessage){
 		
-		String fileName = "email.properties";
-		
 		String emailFrom = "";
 		
 		String emailTo = "";
 		
 		String emailCc = "";
+		
+		String emailBcc = "";
 		
 		String emailGetway = "";
 		
@@ -107,8 +107,6 @@ public class SendEmail {
 		
 		Address from = null;
 		
-		InternetAddress to = null;
-		
 		//MiniMultipart类是一个容器类，包含MimeBodyPart类型的对象 
         MimeMultipart minemultipart = new MimeMultipart();
         //创建一个包含HTML内容的MimeBodyPart  
@@ -126,6 +124,8 @@ public class SendEmail {
 			emailTo = config.getString("EMAIL_TO");
 			
 			emailCc = config.getString("EMAIL_CC");
+			
+			emailBcc = config.getString("EMAIL_BCC");
 			
 			emailPort = config.getString("EMAIL_PORT");
 			
@@ -152,9 +152,15 @@ public class SendEmail {
 			//设置邮件消息的发送者  
 			mailMessage.setFrom(from);
 			//创建邮件的接收者地址，并设置到邮件消息中    
-			to = new InternetAddress(emailTo);
+			/*InternetAddress[] sendTo = new InternetAddress[emailTo.length];
+		    for (int i = 0; i < emailTo.length; i++){
+		    	sendTo[i] = new InternetAddress(emailTo[i]);
+		    }
 			//Message.RecipientType.TO属性表示接收者的类型为TO   
-			mailMessage.setRecipient(Message.RecipientType.TO, to);
+			mailMessage.setRecipients(Message.RecipientType.TO, sendTo);*/ 
+			
+			InternetAddress[] sendTo = InternetAddress.parse(emailTo);
+			mailMessage.setRecipients(Message.RecipientType.TO, sendTo);
 			
 			/******** Set the coding of the email as UTF-8 */
 			html.setContent(content,"text/html;charset=UTF-8");	 
@@ -179,10 +185,24 @@ public class SendEmail {
 	            }
 	        }
 	        
-	        if(!"".equals(emailCc.trim())){
-            	InternetAddress[] sendCc = InternetAddress.parse(emailCc);
-            	mailMessage.setRecipients(Message.RecipientType.CC, sendCc);
-            }
+	        /*if(emailCc.length!=0){
+	        	InternetAddress[] ccTo = new InternetAddress[emailCc.length];
+			    for (int i = 0; i < emailCc.length; i++){
+			    	ccTo[i] = new InternetAddress(emailCc[i]);
+			    } 
+            	mailMessage.setRecipients(Message.RecipientType.CC, ccTo);
+            }*/	        
+	        
+			
+			if(!"".equals(emailCc.trim())){
+				InternetAddress[] ccTo = InternetAddress.parse(emailCc);
+				mailMessage.setRecipients(Message.RecipientType.CC, ccTo);
+			}
+			
+			if(!"".equals(emailBcc.trim())){
+				InternetAddress[] BccTo = InternetAddress.parse(emailBcc);
+				mailMessage.setRecipients(Message.RecipientType.BCC, BccTo);
+			}			
 	        
 	        //将MiniMultipart对象设置为邮件内容    
 	        mailMessage.setContent(minemultipart);    
